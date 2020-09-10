@@ -1,17 +1,36 @@
-﻿# Powershell script check OFFLINE status of printers  
+<#
+.SYNOPSIS
+  Powershell script check OFFLINE status of printers
+.DESCRIPTION
+  The script generates a list with offline printers and outputs to CSV
+.PARAMETER
+  $env
+.INPUTS
+  Variables
+.OUTPUTS
+  CSV file
+.EXAMPLE
+  /
+.NOTES
+  Version:        1.1
+  Author:         JVW
+  Creation Date:  20/06/2019
+  Purpose/Change: Genereate a list with offline printers
+.EXAMPLE
+  None
+#>
 #
-#################################################################################
-# Created = Quick and dirty , does what it have to do
-#
-################################################################################# 
 #Variables
+#
 $printserver = $env:computername
 $printerdetails = Get-Printer | select -ExpandProperty name
 $date = Get-Date -Format "dd/MM/yyyy"
-$Path = "E:\Report\$printserver.csv"
+$Path = "C:\Report\$printserver.csv"
 #
 #Script
-foreach ( $printer in $printerdetails){
+#
+foreach ( $printer in $printerdetails)
+{
 
                 $address = Get-PrinterPort | where { $_.Name -eq $printer } | select -expandproperty printerhostaddress
                 $portname= Get-PrinterPort | where { $_.Name -eq $printer } |select -ExpandProperty name
