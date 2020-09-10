@@ -16,8 +16,6 @@
   Author:         JVW
   Creation Date:  20/06/2019
   Purpose/Change: Genereate a list with offline printers
-.EXAMPLE
-  None
 #>
 #
 #Variables
